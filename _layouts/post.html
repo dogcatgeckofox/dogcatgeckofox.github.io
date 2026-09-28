@@ -1,65 +1,71 @@
-< ! DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
-  </head>
+<head>
 
-  <title>{{ page.title }} - jansportcocacola</title>
-  <style>
-    
-  body {
+<title>{{ page.title }} - jansportcocacola</title>
+
+<style>
+
+body {
     background-color: black;
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
+}
 
-  }
+h1 {
+    font-size: 38px;
+    letter-spacing: 7px;
+}
 
-    h1 {
-      font-size: 38px;
-      letter-spacing: 7px;
-    }
-
-    h1 {
-      font-size: 38px;
-      letter-spacing: 7px;
-    }
-
-  h2 {
+h2 {
     color: red;
     letter-spacing: 4px;
-  }
-    .post {
-      width: 70%;
-      margin: 30px auto;
-      padding: 20px;
-      border: 1px solid #333333;
-    }
+}
 
-    .date {
-      color: #888888;
-      font-size: 14px;
-    }
-    a {
-      color: red;
-    }
-    </style>
+.post {
+    width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid #333333;
+}
+
+.date {
+    color: #888888;
+    font-size: 14px;
+}
+
+a {
+    color: red;
+}
+
+hr {
+    border-color: #333333;
+}
+
+</style>
+
 </head>
-  </body>
-  <h1>{{page.title}}</h1>
-  <div class="post">
 
-    <p class="date">{{page.date|date:"%d/%m/%Y}}</p>
+<body>
 
-    {{content}}
-  </div>
+<h1>{{ page.title }}</h1>
+
+<div class="post">
+
+<p class="date">{{ page.date }}</p>
+
+{{ content }}
+
+</div>
 
 <hr>
-  <p>
-    <a href="/blog.html">BACK TO THE BLOG</a>
-  </p>
+
+<p>
+<a href="/blog.html">BACK TO THE BLOG</a>
+</p>
 
 </body>
 
 </html>
-
-    
