@@ -6,6 +6,13 @@ title: THE BLOG
 <p>★ welcome to my blog ★</p>
 
 <hr>
+<p>
+<button onclick="document.getElementById('music').play()">press if you DARE</button>
+</p>
+
+<audio id="music" loop>
+    <source src="music/clairdelune.mp3" type="audio/mpeg">
+</audio>
 
 {% for post in site.posts %}
 
