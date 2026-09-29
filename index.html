@@ -64,8 +64,8 @@ hr {
 <p>welcome, thanks for being here</p>
 
 <div id="auth-buttons">
-    <button id="sign-in-button" style="display:none;">SIGN IN</button>
-    <button id="sign-up-button" style="display:none;">CREATE ACCOUNT</button>
+    <button id="sign-in-button">SIGN IN</button>
+<button id="sign-up-button">CREATE ACCOUNT</button>
 </div>
 
 <p>
@@ -91,39 +91,22 @@ hr {
 <p>. . .</p>
 
 
+
+
 <script>
-
 window.addEventListener("load", async function () {
-
     await Clerk.load({
         ui: { ClerkUI: window.__internal_ClerkUICtor }
     });
 
-    const signInButton = document.getElementById("sign-in-button");
-    const signUpButton = document.getElementById("sign-up-button");
+    document.getElementById("sign-in-button").onclick = function () {
+        Clerk.openSignIn();
+    };
 
-    if (Clerk.isSignedIn) {
-
-        signInButton.style.display = "none";
-        signUpButton.style.display = "none";
-
-    } else {
-
-        signInButton.style.display = "inline-block";
-        signUpButton.style.display = "inline-block";
-
-        signInButton.addEventListener("click", function () {
-            Clerk.openSignIn();
-        });
-
-        signUpButton.addEventListener("click", function () {
-            Clerk.openSignUp();
-        });
-
-    }
-
+    document.getElementById("sign-up-button").onclick = function () {
+        Clerk.openSignUp();
+    };
 });
-
 </script>
 
 </body>
