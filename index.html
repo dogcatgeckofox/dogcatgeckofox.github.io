@@ -84,7 +84,9 @@ border-color: #333333;
 <p> . . .</p>
 <script>
 window.addEventListener("load", async function () {
-    await Clerk.load();
+    await Clerk.load({
+        ui: { ClerkUI: window.__internal_ClerkUICtor }
+    });
 });
 </script>
 </body>
