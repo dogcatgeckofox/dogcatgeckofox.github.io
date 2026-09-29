@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script
-  defer
-  crossorigin="anonymous"
-  src="https://smiling-skink-321.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"
-  type="text/javascript"
-></script>
 
-<script
-  defer
-  crossorigin="anonymous"
-  data-clerk-publishable-key="pk_test_c21pbGluZy1za2luay0zMjEuY2xlcmsuYWNjb3VudHMuZGV2JApk_test_c21pbGluZy1za2luay0zMjEuY2xlcmsuYWNjb3VudHMuZGV2JA"
-  src="https://smiling-skink-321.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"
-  type="text/javascript"
-></script>
-<title>jansportcocacola</title>
+    <script
+      defer
+      crossorigin="anonymous"
+      src="https://smiling-skink-321.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js"
+      type="text/javascript"
+    ></script>
+
+    <script
+      defer
+      crossorigin="anonymous"
+      data-clerk-publishable-key="pk_test_c21pbGluZy1za2luay0zMjEuY2xlcmsuYWNjb3VudHMuZGV2JApk_test_c21pbGluZy1za2luay0zMjEuY2xlcmsuYWNjb3VudHMuZGV2JA"
+      src="https://smiling-skink-321.clerk.accounts.dev/npm/@clerk/clerk-js@6/dist/clerk.browser.js"
+      type="text/javascript"
+    ></script>
+
+    <title>jansportcocacola</title>
 
 <style>
 
@@ -32,27 +34,23 @@ body {
 }
 
 h1 {
-font-size: 40px;
-letter-spacing: 8px;
-color: white;
-
+    font-size: 40px;
+    letter-spacing: 8px;
+    color: white;
 }
 
 h2 {
-color: red;
-letter-spacing: 5px;
-
+    color: red;
+    letter-spacing: 5px;
 }
 
 a {
-color: red;
-font-weight: bold;
-
+    color: red;
+    font-weight: bold;
 }
 
-hr{
-border-color: #333333;
-
+hr {
+    border-color: #333333;
 }
 
 </style>
@@ -62,32 +60,71 @@ border-color: #333333;
 <body>
 
 <h1>J A N S P O R T C O C A C O L A</h1>
-<p> welcome, thanks for being here</p>
-    <div id="auth-buttons">
-    <button onclick="Clerk.openSignIn()">SIGN IN</button>
-    <button onclick="Clerk.openSignUp()">CREATE ACCOUNT</button>
+
+<p>welcome, thanks for being here</p>
+
+<div id="auth-buttons">
+    <button id="sign-in-button" style="display:none;">SIGN IN</button>
+    <button id="sign-up-button" style="display:none;">CREATE ACCOUNT</button>
 </div>
-    <p>
-<button onclick="document.getElementById('music').play()">press if you DARE</button>
+
+<p>
+    <button onclick="document.getElementById('music').play()">press if you DARE</button>
 </p>
 
-    <audio id="music" loop>
+<audio id="music" loop>
     <source src="music/clairdelune.mp3" type="audio/mpeg">
 </audio>
+
 <hr>
+
 <h2>HOME</h2>
+
 <p>this is my website!.</p>
-</p>
+
 <hr>
+
 <p><a href="blog.html">ENTER THE BLOG</a></p>
+
 <hr>
-<p> . . .</p>
+
+<p>. . .</p>
+
+
 <script>
+
 window.addEventListener("load", async function () {
+
     await Clerk.load({
         ui: { ClerkUI: window.__internal_ClerkUICtor }
     });
+
+    const signInButton = document.getElementById("sign-in-button");
+    const signUpButton = document.getElementById("sign-up-button");
+
+    if (Clerk.isSignedIn) {
+
+        signInButton.style.display = "none";
+        signUpButton.style.display = "none";
+
+    } else {
+
+        signInButton.style.display = "inline-block";
+        signUpButton.style.display = "inline-block";
+
+        signInButton.addEventListener("click", function () {
+            Clerk.openSignIn();
+        });
+
+        signUpButton.addEventListener("click", function () {
+            Clerk.openSignUp();
+        });
+
+    }
+
 });
+
 </script>
+
 </body>
 </html>
