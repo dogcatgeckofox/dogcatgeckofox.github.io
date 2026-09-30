@@ -1,7 +1,7 @@
-const SUPABASE_URL = "https://xtrsbusvlilntkjbzawm.supabase.co/rest/v1/";
+const SUPABASE_URL = "https://xtrsbusvlilntkjbzawm.supabase.co";
 const SUPABASE_KEY = "sb_publishable_26OsfPsmtNibQ55r805QsQ_O3Z37p-Y";
 
-const supabase = window.supabase.createClient(
+const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY,
     {
@@ -31,13 +31,16 @@ async function initComments() {
     const postId = window.location.pathname;
 
     if (!Clerk.user) {
+
         commentLogin.style.display = "block";
         commentForm.style.display = "none";
 
         signInButton.onclick = function () {
             Clerk.openSignIn();
         };
+
     } else {
+
         commentLogin.style.display = "none";
         commentForm.style.display = "block";
     }
@@ -46,7 +49,7 @@ async function initComments() {
 
         commentList.innerHTML = "<p>Loading comments...</p>";
 
-        const { data, error } = await supabase
+        const { data, error } = await supabaseClient
             .from("comments")
             .select("*")
             .eq("post_id", postId)
@@ -104,7 +107,7 @@ async function initComments() {
             Clerk.user.firstName ||
             "user";
 
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from("comments")
             .insert({
                 post_id: postId,
